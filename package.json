@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Vincent Hardouin",
   "license": "AGPL-3.0",
   "dependencies": {
+    "dotenv": "^10.0.0",
+    "lodash": "^4.17.21",
     "puppeteer": "^10.1.0"
   }
 }
