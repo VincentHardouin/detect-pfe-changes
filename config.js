@@ -1,6 +1,6 @@
 require('dotenv').config();
 
-module.exports = (function() {
+module.exports = (function () {
   const config = {
     idProject: process.env.ID_PROJECT,
     credentials: {
@@ -8,9 +8,9 @@ module.exports = (function() {
       password: process.env.PASSWORD,
     },
     discord: {
-      webhook: process.env.DISCORD_WEBHOOK
+      webhook: process.env.DISCORD_WEBHOOK,
     },
     schedule: process.env.SCHEDULE,
-  }
+  };
   return config;
 })();

@@ -22,12 +22,12 @@ async function getContentById(page, id) {
   if (!element) {
     return null;
   }
-  return await page.evaluate(element => element.textContent, element);
+  return await page.evaluate((element) => element.textContent, element);
 }
 
 async function getStepAndStatus(page) {
-  const step = await getContentById(page, 'el_lesprojets_prjstage')
-  const status = await getContentById(page,'el_lesprojets_prjstatus');
+  const step = await getContentById(page, 'el_lesprojets_prjstage');
+  const status = await getContentById(page, 'el_lesprojets_prjstatus');
 
   return { step, status };
 }
@@ -37,7 +37,7 @@ function getOldValues(filename) {
   if (!stringifiedValues) {
     return null;
   }
-  return  JSON.parse(stringifiedValues);
+  return JSON.parse(stringifiedValues);
 }
 
 function saveValues(values, filename) {
@@ -64,4 +64,4 @@ module.exports = async function check(notification) {
   }
 
   await browser.close();
-}
+};
