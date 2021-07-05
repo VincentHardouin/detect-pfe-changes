@@ -10,7 +10,7 @@ async function launchBrowserAndCreateNewPage() {
 }
 
 async function goToWebsiteAndLogIn({ website, username, password }, page) {
-  await page.goto(website, { waitUntil: 'networkidle0' });
+  await page.goto(website, { waitUntil: 'load' });
   await page.type('#username', username);
   await page.type('#password', password);
   await page.click('#btn-submit');
@@ -49,7 +49,7 @@ async function compareNewValuesWithOldValues(newValues, oldValues) {
   return _.isEqual(newValues, oldValues);
 }
 
-module.exports = async function check() {
+module.exports = async function check(notification) {
   const { browser, page } = await launchBrowserAndCreateNewPage();
   const website = `https://vpe-ece.fr/lesprojetsview.php?id=${config.idProject}`;
   const { username, password } = config.credentials;
@@ -58,7 +58,7 @@ module.exports = async function check() {
   const oldValues = await getOldValues('values.txt');
   const isEqual = compareNewValuesWithOldValues(newValues, oldValues);
   if (!isEqual) {
-    console.log('Nouveau status');
+    await notification(`Changement de statut du projet : ${website}`);
     await saveValues(newValues, 'values.txt');
   }
 
