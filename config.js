@@ -6,6 +6,9 @@ module.exports = (function() {
     credentials: {
       username: process.env.USERNAME,
       password: process.env.PASSWORD,
+    },
+    discord: {
+      webhook: process.env.DISCORD_WEBHOOK
     }
   }
   return config;
