@@ -9,7 +9,8 @@ module.exports = (function() {
     },
     discord: {
       webhook: process.env.DISCORD_WEBHOOK
-    }
+    },
+    schedule: process.env.SCHEDULE,
   }
   return config;
 })();
