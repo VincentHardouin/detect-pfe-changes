@@ -45,7 +45,7 @@ function saveValues(values, filename) {
   return fs.writeFileSync(filename, stringifiedValues);
 }
 
-async function compareNewValuesWithOldValues(newValues, oldValues) {
+function compareNewValuesWithOldValues(newValues, oldValues) {
   return _.isEqual(newValues, oldValues);
 }
 
@@ -57,6 +57,7 @@ module.exports = async function check(notification) {
   const newValues = await getStepAndStatus(page);
   const oldValues = await getOldValues('values.txt');
   const isEqual = compareNewValuesWithOldValues(newValues, oldValues);
+
   if (!isEqual) {
     await notification(`Changement de statut du projet : ${website}`);
     await saveValues(newValues, 'values.txt');
